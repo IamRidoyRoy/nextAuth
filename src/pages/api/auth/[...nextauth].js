@@ -1,7 +1,7 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google";
-
+import { signIn } from "next-auth/react";
 export const authOptions = {
     // Configure one or more authentication providers
     providers: [
@@ -15,6 +15,10 @@ export const authOptions = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
         })
     ],
+
+    pages: {
+        signIn: "/login"
+    }
 }
 
 export default NextAuth(authOptions)
